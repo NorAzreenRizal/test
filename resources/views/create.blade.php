@@ -1,4 +1,16 @@
-<form action="/" method="POST">
+    <!-- display error message when submit empty form -->
+    @if($errors->any())
+        <div style="color: red">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <!-- form -->
+    <form action="/" method="POST">
     @csrf
     <label for="name">Name:</label>
     <input type="text" name="name"></br></br>

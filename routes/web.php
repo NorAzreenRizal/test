@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 //include model user
 use App\Models\User;
+//validate form
+use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,20 @@ Route::get('/', function () {
 
 //store data in database
 Route::post('/', function(){
+    //validation: set required for all input type
+    $validator = Validator::make(request()->all(),[
+        'name' => 'required',
+        'email' => 'required',
+        'password' => 'required',
+        'gender' => 'required',
+        'birthday' => 'required',
+        'status' => 'required'
+    ]);
+
+    //show message after validate
+    if ($validator->fails()){
+        return redirect()->back()->withErrors($validator);
+    }
     //model
     $user = new User();  
     //get info from input
