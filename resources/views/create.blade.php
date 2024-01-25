@@ -21,7 +21,10 @@
 
     <label for="status">Status Active:</label>
     <!--check box-->
-    <input type="checkbox" id="status" name="status" value="active"><br></br>
+    <!--value='0' for inactive user-->
+    <input type='hidden' value='0' name='status'>
+    <!--value='1' for active user-->
+    <input type="checkbox" id="status" name="status" value="1"><br></br>
     
     <button>Submit</button>
     <button>Go to Table Page</button>
