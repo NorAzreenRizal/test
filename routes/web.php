@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 //validate form
 use Illuminate\Support\Facades\Validator;
+//use userController
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,9 +59,13 @@ Route::post('/', function(){
 
 //return data from database users
 Route::get('/tablePage', function(){
-    $users = DB::table('users')->get();
+    // filter table to display user active(1) only
+    $users = DB::table('users')->where('status','1')->get();
     // dd($users); //checking connection
     return view ('tablePage', [
         'users' => $users
     ]);
 });
+
+//soft delete
+Route::get('/delete/{id}',[UserController::class, 'delete']);
