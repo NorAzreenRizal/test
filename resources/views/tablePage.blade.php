@@ -38,11 +38,12 @@ tr:nth-child(even) {
     <td>{{$user->name}}</td>    
     <td>{{$user->email}}</td>   
     <td>{{$user->gender}}</td>
-    <!-- display birthday in format (dd/mm/yyyy) -->
+    {{-- display birthday in format (dd/mm/yyyy) --}}
     <td>{{date('d/m/Y', strtotime($user->birthday));}}</td>
-    <!-- display created at in format (dd/mm/yyyy) -->
+    {{-- display created at in format (dd/mm/yyyy) --}}
     <td>{{date('d/m/Y', strtotime($user->created_at));}}</td> 
-    <td></td>
+    {{-- button delete --}}
+    <td><button><a href="/delete/{{$user->id}}">Delete</a></button></td>
   </tr>
   @endforeach
 

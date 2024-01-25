@@ -1,4 +1,4 @@
-    <!-- display error message when submit empty form -->
+    {{-- display error message when submit empty form --}}
     @if($errors->any())
         <div style="color: red">
             <ul>
@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <!-- form -->
+    {{-- form --}}
     <form action="/" method="POST">
     @csrf
     <label for="name">Name:</label>
@@ -22,7 +22,7 @@
     <input type="password" name="password"></br></br>
 
     <label for="gender">Gender:</label>
-    <!--select box-->
+    {{--select box--}}
     <select name="gender" id="gender">
         <option value="male">Male</option>
         <option value="female">Female</option>
@@ -32,12 +32,13 @@
     <input type="date" name="birthday"></br></br>
 
     <label for="status">Status Active:</label>
-    <!--check box-->
-    <!--value='0' for inactive user-->
+    {{--check box--}}
+    {{--value='0' for inactive user--}}
     <input type='hidden' value='0' name='status'>
-    <!--value='1' for active user-->
+    {{--value='1' for active user--}}
     <input type="checkbox" id="status" name="status" value="1"><br></br>
     
     <button>Submit</button>
-    <button>Go to Table Page</button>
+    {{-- redirect to table page --}}
+    <button><a href="/tablePage">Go to Table Page</a></button>
 </form>
