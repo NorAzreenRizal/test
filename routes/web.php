@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Validator;
 
 //show form to user
 Route::get('/', function () {  
-    return view('create');
+    return view('formPage');
 });
 
 //store data in database
@@ -53,4 +53,13 @@ Route::post('/', function(){
 
     //redirect back to view after save
     return redirect('/');
+});
+
+//return data from database users
+Route::get('/tablePage', function(){
+    $users = DB::table('users')->get();
+    // dd($users); //checking connection
+    return view ('tablePage', [
+        'users' => $users
+    ]);
 });
